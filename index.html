@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#123c4f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>JournalDesk Mobile</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div id="app">
+  <!-- setup -->
+  <section id="setup" class="screen hidden">
+    <div class="setup-card">
+      <img src="weave_logo.png" alt="Weave Solutions" class="setup-logo">
+      <h1>JournalDesk Mobile</h1>
+      <p class="muted">View your books anywhere – balances, ledgers, day book and reports, as of your last sync.</p>
+      <label>Sync address (Web App URL)
+        <input id="s-url" type="url" placeholder="https://script.google.com/macros/s/…/exec" autocomplete="off">
+      </label>
+      <label>Client code
+        <input id="s-code" type="text" autocomplete="off" autocapitalize="characters">
+      </label>
+      <label>PIN
+        <input id="s-pin" type="password" inputmode="numeric" autocomplete="off">
+      </label>
+      <button id="s-go" class="btn primary">Open my books</button>
+      <p id="s-err" class="err"></p>
+      <p class="muted small">The address and code are filled in automatically when you open the link shared from the
+        desktop software. Your PIN is never stored in plain form.</p>
+    </div>
+  </section>
+
+  <!-- main -->
+  <section id="main" class="screen hidden">
+    <header class="top">
+      <div>
+        <div id="h-company" class="company"></div>
+        <div id="h-sync" class="synced"></div>
+      </div>
+      <button id="refresh" class="icon-btn" aria-label="Refresh">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M17.65 6.35A7.95 7.95 0 0 0 12 4a8 8 0 1 0 7.75 10h-2.08A6 6 0 1 1 12 6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+      </button>
+    </header>
+    <div id="toast" class="toast hidden"></div>
+    <main id="view"></main>
+    <nav class="tabs">
+      <button data-tab="home" class="active"><span>🏠</span>Home</button>
+      <button data-tab="accounts"><span>👥</span>Accounts</button>
+      <button data-tab="daybook"><span>📒</span>Day Book</button>
+      <button data-tab="reports"><span>📊</span>Reports</button>
+      <button data-tab="changes"><span>🕘</span>Changes</button>
+    </nav>
+  </section>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
